@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "materialenergy.ultimate.upgrade.mixin",
+  "compatibilityLevel": "JAVA_16",
+  "mixins": [
+    "LavaCrafting",
+    "IronFireproof",
+    "BreakUnbreakable"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

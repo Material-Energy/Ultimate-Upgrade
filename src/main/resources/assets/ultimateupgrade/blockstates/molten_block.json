@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": {
+            "model": "ultimateupgrade:block/molten_block"
+        }
+    }
+}
