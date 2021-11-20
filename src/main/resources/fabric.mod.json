@@ -4,7 +4,7 @@
   "version": "${version}",
 
   "name": "Ultimate Upgrade",
-  "description": "Dramatically increases progression of Minecraft!",
+  "description": "Drastically increases progression of Minecraft",
   "authors": [
     "MaterialEnergy"
   ],
@@ -20,6 +20,9 @@
   "entrypoints": {
     "main": [
       "materialenergy.ultimate.upgrade.UltimateUpgrade"
+    ],
+    "client": [
+      "materialenergy.ultimate.upgrade.UUpgrade"
     ]
   },
   "mixins": [

@@ -5,8 +5,7 @@
   "compatibilityLevel": "JAVA_16",
   "mixins": [
     "LavaCrafting",
-    "IronFireproof",
-    "BreakUnbreakable"
+    "IronFireproof"
   ],
   "client": [
   ],

@@ -9,7 +9,7 @@ public class MoltenToolMaterial implements ToolMaterial {
 
     @Override
     public int getDurability() {
-        return 500;
+        return 1024;
     }
 
     @Override
