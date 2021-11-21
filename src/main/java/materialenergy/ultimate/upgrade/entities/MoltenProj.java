@@ -22,8 +22,7 @@ public class MoltenProj extends PersistentProjectileEntity {
     private static final TrackedData<Boolean> SUPERCHARGED;
 
     public MoltenProj(EntityType entityType, World world) {
-        super(entityType,
-                world);
+        super(entityType, world);
     }
 
     public MoltenProj(World world, double x, double y, double z){
