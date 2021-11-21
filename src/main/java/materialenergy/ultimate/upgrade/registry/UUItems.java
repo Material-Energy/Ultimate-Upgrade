@@ -20,14 +20,13 @@ public class UUItems {
 
     public static final Item ULTIMATUM = register("ultimatum",new Ultimatum(UltimatumMat.INSTANCE,0, 0.0F, new Item.Settings().group(UltimateUpgrade.UU_MAIN).fireproof().rarity(Rarity.EPIC)));
 
-    public static final Item MOLTEN_SHOVEL = register("ultimatum",new ShovelItem(MoltenToolMaterial.INSTANCE, 1.5F, -3.0F, new Item.Settings().group(UltimateUpgrade.UU_MAIN).fireproof()));
-    public static final Item MOLTEN_SWORD = register("ultimatum",new SwordItem(MoltenToolMaterial.INSTANCE, 3, -2.4F, new Item.Settings().group(UltimateUpgrade.UU_MAIN).fireproof()));
-    public static final Item MOLTEN_PICKAXE = register("ultimatum",new MoltenPickaxe(MoltenToolMaterial.INSTANCE, 1, -2.8F, new Item.Settings().group(UltimateUpgrade.UU_MAIN).fireproof()));
-    public static final Item MOLTEN_INGOT = register("ultimatum",new Item(new FabricItemSettings().group(UltimateUpgrade.UU_MAIN).fireproof()));
-    public static final Item MOLTEN_ALLOY = register("ultimatum",new Item(new FabricItemSettings().group(UltimateUpgrade.UU_MAIN).fireproof()));
-    public static final Item MOLTEN_BOW = register("ultimatum",new MoltenBow(new FabricItemSettings().group(UltimateUpgrade.UU_MAIN).fireproof().maxDamage(1024)));
+    public static final Item MOLTEN_SHOVEL = register("molten_shovel",new ShovelItem(MoltenToolMaterial.INSTANCE, 1.5F, -3.0F, new Item.Settings().group(UltimateUpgrade.UU_MAIN).fireproof()));
+    public static final Item MOLTEN_SWORD = register("molten_sword",new SwordItem(MoltenToolMaterial.INSTANCE, 3, -2.4F, new Item.Settings().group(UltimateUpgrade.UU_MAIN).fireproof()));
+    public static final Item MOLTEN_PICKAXE = register("molten_pickaxe",new MoltenPickaxe(MoltenToolMaterial.INSTANCE, 1, -2.8F, new Item.Settings().group(UltimateUpgrade.UU_MAIN).fireproof()));
+    public static final Item MOLTEN_INGOT = register("molten_ingot",new Item(new FabricItemSettings().group(UltimateUpgrade.UU_MAIN).fireproof()));
+    public static final Item MOLTEN_BOW = register("molten_bow",new MoltenBow(new FabricItemSettings().group(UltimateUpgrade.UU_MAIN).fireproof().maxDamage(1024)));
 
-    public static final Item ENCHANTED_GOLDEN_CARROT = register("ultimatum",new GlowingItem(new FabricItemSettings().group(UltimateUpgrade.UU_MAIN).rarity(Rarity.EPIC).group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(12).saturationModifier(1.2F).statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 2400, 3), 1.0F).alwaysEdible().snack().build())));
+    public static final Item ENCHANTED_GOLDEN_CARROT = register("enchanted_golden_carrot",new GlowingItem(new FabricItemSettings().group(UltimateUpgrade.UU_MAIN).rarity(Rarity.EPIC).group(ItemGroup.FOOD).food(new FoodComponent.Builder().hunger(12).saturationModifier(1.2F).statusEffect(new StatusEffectInstance(StatusEffects.ABSORPTION, 2400, 3), 1.0F).alwaysEdible().snack().build())));
 
     public static void init() {
     }
