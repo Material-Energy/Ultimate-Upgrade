@@ -1,6 +1,7 @@
 package materialenergy.ultimate.upgrade.tools;
 
 import materialenergy.ultimate.upgrade.UltimateUpgrade;
+import materialenergy.ultimate.upgrade.registry.UUItems;
 import net.minecraft.item.ToolMaterial;
 import net.minecraft.recipe.Ingredient;
 
@@ -9,7 +10,7 @@ public class MoltenToolMaterial implements ToolMaterial {
 
     @Override
     public int getDurability() {
-        return 500;
+        return 1024;
     }
 
     @Override
@@ -34,6 +35,6 @@ public class MoltenToolMaterial implements ToolMaterial {
 
     @Override
     public Ingredient getRepairIngredient() {
-        return Ingredient.ofItems(UltimateUpgrade.MOLTEN_INGOT);
+        return Ingredient.ofItems(UUItems.MOLTEN_INGOT);
     }
 }

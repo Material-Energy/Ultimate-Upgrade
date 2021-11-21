@@ -1,0 +1,12 @@
+{
+  "item.ultimateupgrade.ultimatum": "Ultimatum",
+  "item.ultimateupgrade.molten_bow": "Molten Bow",
+  "item.ultimateupgrade.molten_ingot": "Molten Ingot",
+  "block.ultimateupgrade.molten_block": "Molten Block",
+  "item.ultimateupgrade.molten_sword": "Molten Sword",
+  "item.ultimateupgrade.molten_pickaxe": "Molten Pickaxe",
+  "item.ultimateupgrade.molten_shovel": "Molten Shovel",
+  "item.minecraft.enchanted_golden_carrot": "Enchanted Golden Carrot",
+  "effect.ultimateupgrade.incendiary": "Incendiary",
+  "death.attack.incinerate": "%s ignited"
+}

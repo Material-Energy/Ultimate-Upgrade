@@ -3,9 +3,8 @@ plugins {
 	id 'maven-publish'
 }
 
-
-version = project.mod_version as Object
-group = project.maven_group as Object
+version = project.mod_version
+group = project.maven_group
 
 repositories {
 	// Add repositories to retrieve artifacts from in here.
@@ -35,7 +34,7 @@ processResources {
 
 tasks.withType(JavaCompile).configureEach {
 	// Minecraft 1.17 (21w19a) upwards uses Java 16.
-	it.options.release = 16 as Property<Integer>
+	it.options.release = 16
 }
 
 java {
