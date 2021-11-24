@@ -1,6 +1,7 @@
 package materialenergy.ultimate.upgrade.effects;
 
-import materialenergy.ultimate.upgrade.registry.DamageSource;
+import materialenergy.ultimate.upgrade.registry.UUDamageSource;
+import materialenergy.ultimate.upgrade.registry.UUDamageSource;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.effect.StatusEffect;
 import net.minecraft.entity.effect.StatusEffectType;
@@ -26,7 +27,7 @@ public class FireWeakness extends StatusEffect {
             if (Objects.requireNonNull(entity.getDamageTracker().getMostRecentDamage()).getDamageSource().isFire() &&
                             entity.getDamageTracker().getTimeSinceLastAttack() <= 20) {
                 entity.hurtTime = 0;
-                entity.damage(DamageSource.INCINERATE, (float) (amplifier + 1));
+                entity.damage(UUDamageSource.INCINERATE, (float) (amplifier + 1));
                 entity.playSound(SoundEvents.ENTITY_PLAYER_HURT_ON_FIRE, amplifier + 1, 1.0F);
             }
         }

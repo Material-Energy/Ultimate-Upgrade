@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.tools;
+package materialenergy.ultimate.upgrade.item;
 
 import materialenergy.ultimate.upgrade.UltimateUpgrade;
 import materialenergy.ultimate.upgrade.registry.UUItems;

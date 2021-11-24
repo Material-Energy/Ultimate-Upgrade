@@ -4,8 +4,9 @@
   "package": "materialenergy.ultimate.upgrade.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "LavaCrafting",
-    "IronFireproof"
+    "ImpalingDamageAll",
+    "IronFireproof",
+    "LavaCrafting"
   ],
   "client": [
   ],

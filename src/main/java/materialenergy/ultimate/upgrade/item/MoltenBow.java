@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.tools;
+package materialenergy.ultimate.upgrade.item;
 
 import materialenergy.ultimate.upgrade.entities.MoltenProj;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -31,7 +31,7 @@ public class MoltenBow extends BowItem {
                     itemStack = new ItemStack(Items.ARROW);
                 }
 
-                int i = ((int) ((double)(this.getMaxUseTime(stack) - remainingUseTicks)/1.5)*2);
+                int i = this.getMaxUseTime(stack) - remainingUseTicks;
                 float f = getPullProgress(i);
                 if (!((double)f < 0.1D)) {
                     boolean bl2 = bl && itemStack.isOf(Items.ARROW);
@@ -78,5 +78,9 @@ public class MoltenBow extends BowItem {
 
     public MoltenProj createArrow(World world, ItemStack stack, LivingEntity shooter) {
         return new MoltenProj(world, shooter);
+    }
+
+    public int getMaxUseTime(ItemStack stack) {
+        return 96000;
     }
 }

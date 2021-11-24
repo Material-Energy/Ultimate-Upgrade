@@ -1,5 +1,6 @@
 package materialenergy.ultimate.upgrade.registry;
 
+import materialenergy.ultimate.upgrade.entities.DraconicTridentEntity;
 import materialenergy.ultimate.upgrade.entities.MoltenProj;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
@@ -14,6 +15,13 @@ public class UUEntities {
             FabricEntityTypeBuilder
                     .<MoltenProj>create(SpawnGroup.MISC, MoltenProj::new)
                     .dimensions(EntityDimensions.fixed(0.5f, 0.5f))
+                    .build());
+    public static EntityType<DraconicTridentEntity> DRACONIC_TRIDENT = Registry.register(
+            Registry.ENTITY_TYPE,
+            Registries.id("draconic_trident"),
+            FabricEntityTypeBuilder
+                    .<DraconicTridentEntity>create(SpawnGroup.MISC,DraconicTridentEntity::new)
+                    .dimensions(EntityDimensions.fixed(0.25f, 0.25f))
                     .build());
 
     public static void init() {

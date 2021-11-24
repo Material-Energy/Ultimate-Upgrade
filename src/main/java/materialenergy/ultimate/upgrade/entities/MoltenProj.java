@@ -1,6 +1,6 @@
 package materialenergy.ultimate.upgrade.entities;
 
-import materialenergy.ultimate.upgrade.registry.DamageSource;
+import materialenergy.ultimate.upgrade.registry.UUDamageSource;
 import materialenergy.ultimate.upgrade.registry.UUEffects;
 import materialenergy.ultimate.upgrade.registry.UUEntities;
 import net.minecraft.entity.Entity;
@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 public class MoltenProj extends PersistentProjectileEntity {
     private static final TrackedData<Boolean> SUPERCHARGED;
 
-    public MoltenProj(EntityType entityType, World world) {
+    public MoltenProj(EntityType<? extends MoltenProj> entityType, World world) {
         super(entityType, world);
     }
 
@@ -99,7 +99,7 @@ public class MoltenProj extends PersistentProjectileEntity {
         Entity entity = this.getEffectCause();
 
         if (this.getSupercharged()) {
-            target.damage(DamageSource.SOUL_BURN, (float) this.getDamage() * 2);
+            target.damage(UUDamageSource.SOUL_BURN, (float) this.getDamage() * 2);
         }
         super.onHit(target);
         target.setOnFireFor(5 * (this.getSupercharged() ? 2 : 1));

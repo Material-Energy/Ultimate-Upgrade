@@ -1,9 +1,6 @@
 package materialenergy.ultimate.upgrade;
 
-import materialenergy.ultimate.upgrade.registry.UUBlocks;
-import materialenergy.ultimate.upgrade.registry.UUEffects;
-import materialenergy.ultimate.upgrade.registry.UUEntities;
-import materialenergy.ultimate.upgrade.registry.UUItems;
+import materialenergy.ultimate.upgrade.registry.*;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
@@ -24,6 +21,7 @@ public class UltimateUpgrade implements ModInitializer {
 		UUBlocks.init();
 		UUEffects.init();
 		UUEntities.init();
+		UUEnchantments.init();
 	}
 }
 
