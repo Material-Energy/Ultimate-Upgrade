@@ -4,6 +4,7 @@ import materialenergy.ultimate.upgrade.misc.CustomDamageSource;
 import materialenergy.ultimate.upgrade.registry.UUEntities;
 import materialenergy.ultimate.upgrade.registry.UUItems;
 import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -41,7 +42,7 @@ public class DraconicTridentEntity extends PersistentProjectileEntity {
 
     public DraconicTridentEntity(World world, LivingEntity owner, ItemStack stack) {
         super(UUEntities.DRACONIC_TRIDENT, owner, world);
-        this.tridentStack = new ItemStack(UUItems.DRACONIAN_TRIDENT);
+        this.tridentStack = new ItemStack(UUItems.DRACONIC_TRIDENT);
         this.tridentStack = stack.copy();
         LOGGER.debug(this.tridentStack);
         this.dataTracker.set(LOYALTY, (byte)EnchantmentHelper.getLoyalty(stack));
@@ -51,13 +52,17 @@ public class DraconicTridentEntity extends PersistentProjectileEntity {
 
     protected void initDataTracker() {
         super.initDataTracker();
-        this.dataTracker.startTracking(TRIDENT,new ItemStack(UUItems.DRACONIAN_TRIDENT));
+        this.dataTracker.startTracking(TRIDENT,new ItemStack(UUItems.DRACONIC_TRIDENT));
         this.dataTracker.startTracking(LOYALTY, (byte)0);
         this.dataTracker.startTracking(ENCHANTED, false);
     }
 
     public void tick() {
         if (this.inGroundTime > 4) {
+            this.dealtDamage = true;
+        }
+
+        if (this.getY() < 0){
             this.dealtDamage = true;
         }
 
@@ -116,7 +121,7 @@ public class DraconicTridentEntity extends PersistentProjectileEntity {
 
     protected void onEntityHit(EntityHitResult entityHitResult) {
         Entity entity = entityHitResult.getEntity();
-        float f = 16.0F;
+        float f = 12.0F;
         if (entity instanceof LivingEntity livingEntity && this.tridentStack != null) {
             f += EnchantmentHelper.getAttackDamage(this.tridentStack, livingEntity.getGroup());
         }
@@ -126,10 +131,6 @@ public class DraconicTridentEntity extends PersistentProjectileEntity {
         this.dealtDamage = true;
         SoundEvent soundEvent = SoundEvents.ITEM_TRIDENT_HIT;
         if (entity.damage(damageSource, f)) {
-            if (entity.getType() == EntityType.ENDERMAN) {
-                return;
-            }
-
             if (entity instanceof LivingEntity livingEntity2) {
                 if (livingEntity instanceof LivingEntity) {
                     EnchantmentHelper.onUserDamaged(livingEntity2, livingEntity);
@@ -144,8 +145,13 @@ public class DraconicTridentEntity extends PersistentProjectileEntity {
         float livingEntity2 = 1.0F;
         if (this.world instanceof ServerWorld && this.hasChanneling()) {
             BlockPos blockPos = entity.getBlockPos();
-            ExplosionBehavior explosionBehavior = new ExplosionBehavior();
-            world.createExplosion(this.getOwner(),DamageSource.DRAGON_BREATH, explosionBehavior, blockPos.getX(),blockPos.getY(),blockPos.getZ(),3.0F,false, Explosion.DestructionType.NONE);
+            if (!this.world.getDimension().hasEnderDragonFight()){
+                ExplosionBehavior explosionBehavior = new ExplosionBehavior();
+                world.createExplosion(this.getOwner(),DamageSource.DRAGON_BREATH, explosionBehavior, blockPos.getX(),blockPos.getY(),blockPos.getZ(),3.0F,false, Explosion.DestructionType.NONE);
+            } else {
+                int shards = 80 + ((EnchantmentHelper.getLevel(Enchantments.IMPALING,this.tridentStack) + 1) * this.tridentStack.getOrCreateNbt().getByte("EnderEnergy"));
+                DraconicShard.explosion(this.getX(),this.getY(),this.getZ(), world, (LivingEntity) this.getOwner(), shards, EnchantmentHelper.getLevel(Enchantments.IMPALING,this.tridentStack));
+            }
             soundEvent = SoundEvents.ITEM_TRIDENT_THUNDER;
             livingEntity2 = 5.0F;
         }

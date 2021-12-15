@@ -1,5 +1,6 @@
 package materialenergy.ultimate.upgrade.registry;
 
+import materialenergy.ultimate.upgrade.entities.DraconicShard;
 import materialenergy.ultimate.upgrade.entities.DraconicTridentEntity;
 import materialenergy.ultimate.upgrade.entities.MoltenProj;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
@@ -15,6 +16,13 @@ public class UUEntities {
             FabricEntityTypeBuilder
                     .<MoltenProj>create(SpawnGroup.MISC, MoltenProj::new)
                     .dimensions(EntityDimensions.fixed(0.5f, 0.5f))
+                    .build());
+    public static final EntityType<DraconicShard> DRACONIC_SHARD = Registry.register(
+            Registry.ENTITY_TYPE,
+            Registries.id("draconic_shard"),
+            FabricEntityTypeBuilder
+                    .<DraconicShard>create(SpawnGroup.MISC,DraconicShard::new)
+                    .dimensions(EntityDimensions.fixed(0.5f,0.5f))
                     .build());
     public static EntityType<DraconicTridentEntity> DRACONIC_TRIDENT = Registry.register(
             Registry.ENTITY_TYPE,

@@ -3,6 +3,7 @@ package materialenergy.ultimate.upgrade.item;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import materialenergy.ultimate.upgrade.entities.DraconicTridentEntity;
+import materialenergy.ultimate.upgrade.registry.UUEffects;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.BlockState;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -12,10 +13,12 @@ import net.minecraft.entity.MovementType;
 import net.minecraft.entity.attribute.EntityAttribute;
 import net.minecraft.entity.attribute.EntityAttributeModifier;
 import net.minecraft.entity.attribute.EntityAttributes;
+import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.TridentItem;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -37,7 +40,7 @@ public class DraconicTrident extends TridentItem {
     public DraconicTrident(FabricItemSettings fabricItemSettings) {
         super(fabricItemSettings);
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
-        builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 8.0D, EntityAttributeModifier.Operation.ADDITION));
+        builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 12.0D, EntityAttributeModifier.Operation.ADDITION));
         builder.put(EntityAttributes.GENERIC_ATTACK_SPEED, new EntityAttributeModifier(ATTACK_SPEED_MODIFIER_ID, "Tool modifier", -2.9000000953674316D, EntityAttributeModifier.Operation.ADDITION));
         this.attributeModifiers = builder.build();
     }
@@ -54,6 +57,15 @@ public class DraconicTrident extends TridentItem {
     @Override
     public int getMaxUseTime(ItemStack stack) {
         return 36000;
+    }
+
+    @Override
+    public boolean hasGlint(ItemStack stack) {
+        NbtCompound nbt = stack.getNbt();
+        if (nbt != null) {
+            return nbt.getByte("EnderEnergy") > 0;
+        }
+        return false;
     }
 
     @Override
@@ -82,21 +94,21 @@ public class DraconicTrident extends TridentItem {
 
                     playerEntity.incrementStat(Stats.USED.getOrCreateStat(this));
                     if (j > 0) {
+                        DimensionType dimension = playerEntity.getEntityWorld().getDimension();
                         float tridentEntity = playerEntity.getYaw();
                         float f = playerEntity.getPitch();
                         float g = -MathHelper.sin(tridentEntity * 0.017453292F) * MathHelper.cos(f * 0.017453292F);
                         float h = -MathHelper.sin(f * 0.017453292F);
                         float k = MathHelper.cos(tridentEntity * 0.017453292F) * MathHelper.cos(f * 0.017453292F);
                         float l = MathHelper.sqrt(g * g + h * h + k * k);
-                        float m = 3.0F * ((1.0F + (float)j) / 4.0F);
+                        float m = 3.0F * ((1.0F + (dimension.hasEnderDragonFight() ? (j*3.0f) : (float)j)) / 4.0F);
                         g *= m / l;
                         h *= m / l;
                         k *= m / l;
                         playerEntity.addVelocity(g, h, k);
-                        DimensionType dimension = playerEntity.getEntityWorld().getDimension();
-                        playerEntity.setRiptideTicks(dimension.hasFixedTime() && !dimension.isUltrawarm()? 60 : 20);
+
+                        playerEntity.setRiptideTicks(dimension.hasEnderDragonFight() ? 60 : 20);
                         if (playerEntity.isOnGround()) {
-                            float n = 1.1999999F;
                             playerEntity.move(MovementType.SELF, new Vec3d(0.0D, 1.1999999284744263D, 0.0D));
                         }
 
@@ -132,6 +144,9 @@ public class DraconicTrident extends TridentItem {
     public boolean postHit(ItemStack stack, LivingEntity target, LivingEntity attacker) {
         if(new Random().nextInt(2) == 1) {
             stack.damage(1, attacker, (e) -> e.sendEquipmentBreakStatus(EquipmentSlot.MAINHAND));
+        }
+        if (target.getEntityWorld().getDimension().hasEnderDragonFight()){
+            target.addStatusEffect(new StatusEffectInstance(UUEffects.VOID_LEECH,20),attacker);
         }
         return true;
     }

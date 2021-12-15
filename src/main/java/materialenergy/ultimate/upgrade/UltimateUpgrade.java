@@ -22,6 +22,9 @@ public class UltimateUpgrade implements ModInitializer {
 		UUEffects.init();
 		UUEntities.init();
 		UUEnchantments.init();
+		UUCommands.init();
+		UUGUI.init();
+		UURecipe.init();
 	}
 }
 

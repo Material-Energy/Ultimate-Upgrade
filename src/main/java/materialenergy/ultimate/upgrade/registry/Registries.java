@@ -6,4 +6,5 @@ public class Registries {
     public static Identifier id(String name) {
         return new Identifier("ultimateupgrade",name);
     }
+
 }

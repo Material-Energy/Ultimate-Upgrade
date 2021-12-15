@@ -9,6 +9,7 @@ public class CustomDamageSource extends DamageSource {
     public boolean bypassesArmor;
     public float exhaustion;
     public boolean fire;
+    public boolean outOfWorld;
 
     public CustomDamageSource(String name) {
         super(name);
@@ -24,6 +25,12 @@ public class CustomDamageSource extends DamageSource {
     @Override
     public CustomDamageSource setFire() {
         this.fire = true;
+        return this;
+    }
+
+    @Override
+    public DamageSource setOutOfWorld() {
+        this.outOfWorld = true;
         return this;
     }
 

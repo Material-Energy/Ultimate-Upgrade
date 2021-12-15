@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "ultimateupgrade:block/molten_anvil",
+      "y": 270
+    },
+    "facing=north": {
+      "model": "ultimateupgrade:block/molten_anvil",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "ultimateupgrade:block/molten_anvil"
+    },
+    "facing=west": {
+      "model": "ultimateupgrade:block/molten_anvil",
+      "y": 90
+    }
+  }
+}

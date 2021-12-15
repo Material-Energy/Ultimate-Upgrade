@@ -1,10 +1,11 @@
 package materialenergy.ultimate.upgrade.registry;
 
 import materialenergy.ultimate.upgrade.UltimateUpgrade;
+import materialenergy.ultimate.upgrade.block.MoltenAnvilBlock;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.fabricmc.fabric.api.tool.attribute.v1.FabricToolTags;
 import net.minecraft.block.Block;
+import net.minecraft.block.MapColor;
 import net.minecraft.block.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.sound.BlockSoundGroup;
@@ -16,11 +17,23 @@ public class UUBlocks {
             "molten_block",
             new Block(
             FabricBlockSettings
-                    .of(Material.METAL)
-                    .strength(3.0f,10.0f)
+                    .of(Material.METAL, MapColor.IRON_GRAY)
+                    .strength(3.0f,3.0f)
                     .sounds(BlockSoundGroup.METAL)
-                    .breakByTool(FabricToolTags.PICKAXES, 2)
                     .requiresTool()
+            ),
+            new FabricItemSettings()
+                    .fireproof()
+                    .group(UltimateUpgrade.UU_MAIN)
+    );
+    public static final Block MOLTEN_ANVIL = register(
+            "molten_anvil",
+            new MoltenAnvilBlock(
+                    FabricBlockSettings
+                            .of(Material.METAL, MapColor.IRON_GRAY)
+                            .strength(3.0f,3.0f)
+                            .sounds(BlockSoundGroup.METAL)
+                            .requiresTool()
             ),
             new FabricItemSettings()
                     .fireproof()

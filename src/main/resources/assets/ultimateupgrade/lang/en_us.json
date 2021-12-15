@@ -3,10 +3,13 @@
   "item.ultimateupgrade.molten_bow": "Molten Bow",
   "item.ultimateupgrade.molten_ingot": "Molten Ingot",
   "block.ultimateupgrade.molten_block": "Molten Block",
+  "block.ultimateupgrade.molten_anvil": "Molten Anvil",
   "item.ultimateupgrade.molten_sword": "Molten Sword",
   "item.ultimateupgrade.molten_pickaxe": "Molten Pickaxe",
   "item.ultimateupgrade.molten_shovel": "Molten Shovel",
   "item.ultimateupgrade.enchanted_golden_carrot": "Enchanted Golden Carrot",
+  "item.ultimateupgrade.draconic_trident": "Draconic Trident",
   "effect.ultimateupgrade.incendiary": "Incendiary",
-  "death.attack.incinerate": "%s ignited"
+  "death.attack.incinerate": "%s ignited",
+  "container.molten.repair": "Upgrade"
 }

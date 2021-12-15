@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ooo",
+    " i ",
+    "iii"
+  ],
+  "key": {
+    "o": {
+      "item": "ultimateupgrade:molten_block"
+    },
+    "i": {
+      "item": "ultimateupgrade:molten_ingot"
+    }
+  },
+  "result": {
+    "item": "ultimateupgrade:molten_anvil"
+  }
+}

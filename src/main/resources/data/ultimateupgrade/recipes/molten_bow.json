@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " i/",
+    "o /",
+    " i/"
+  ],
+  "key": {
+    "i": {
+      "item": "ultimateupgrade:molten_ingot"
+    },
+    "/": {
+      "item": "minecraft:blaze_rod"
+    },
+    "o": {
+      "item": "ultimateupgrade:molten_block"
+    }
+  },
+  "result": {
+    "item": "ultimateupgrade:molten_bow"
+  }
+}

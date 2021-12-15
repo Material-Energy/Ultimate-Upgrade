@@ -4,9 +4,22 @@
   "package": "materialenergy.ultimate.upgrade.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "DragonTotem",
+    "FixArmor",
     "ImpalingDamageAll",
+    "IncendiaryMixin",
     "IronFireproof",
-    "LavaCrafting"
+    "LavaCrafting",
+    "ModifyFallback",
+    "RemoveCap",
+    "RunicEnchant",
+    "RunicSubMixin",
+    "Ultimatum",
+    "UnrenderHearts",
+    "runic.FireAspectRunic",
+    "runic.ProtectionRunic",
+    "runic.ProtMod",
+    "runic.ThornsRunic"
   ],
   "client": [
   ],

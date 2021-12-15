@@ -36,7 +36,6 @@ public class MoltenBow extends BowItem {
                 if (!((double)f < 0.1D)) {
                     boolean bl2 = bl && itemStack.isOf(Items.ARROW);
                     if (!world.isClient) {
-                        ArrowItem arrowItem = (ArrowItem)(itemStack.getItem() instanceof ArrowItem ? itemStack.getItem() : Items.ARROW);
                         MoltenProj moltenProj = createArrow(world, itemStack, playerEntity);
                         moltenProj.setProperties(playerEntity, playerEntity.getPitch(), playerEntity.getYaw(), 0.0F, f * 3.0F, 1.0F);
                         if(f == 1.0F) {
