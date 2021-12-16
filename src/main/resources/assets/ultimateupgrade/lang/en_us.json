@@ -9,8 +9,13 @@
   "item.ultimateupgrade.molten_shovel": "Molten Shovel",
   "item.ultimateupgrade.enchanted_golden_carrot": "Enchanted Golden Carrot",
   "item.ultimateupgrade.draconic_trident": "Draconic Trident",
+  "item.ultimateupgrade.draconic_crystal": "Draconic Crystal",
+  "item.ultimateupgrade.raw_draconic_crystal": "Raw Draconic Crystal",
+  "item.ultimateupgrade.draconic_totem": "Draconic Totem",
   "effect.ultimateupgrade.incendiary": "Incendiary",
+  "effect.ultimateupgrade.void_leech": "Void Leech",
   "death.attack.incinerate": "%s ignited",
+  "death.attack.void": "%s vanished",
   "container.molten.repair": "Upgrade",
   "ultimateupgrade.enderenergy.tooltip": "Ender Energy: "
 }
