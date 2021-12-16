@@ -6,6 +6,7 @@ import materialenergy.ultimate.upgrade.entities.DraconicTridentEntity;
 import materialenergy.ultimate.upgrade.registry.UUEffects;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.BlockState;
+import net.minecraft.client.item.TooltipContext;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.entity.LivingEntity;
@@ -23,6 +24,9 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
@@ -31,7 +35,9 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraft.world.dimension.DimensionType;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.Random;
 
 public class DraconicTrident extends TridentItem {
@@ -167,5 +173,11 @@ public class DraconicTrident extends TridentItem {
     @Override
     public int getEnchantability() {
         return 3;
+    }
+
+    @Override
+    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
+        DraconicBaseItem.addTooltip(stack, tooltip);
+        super.appendTooltip(stack, world, tooltip, context);
     }
 }

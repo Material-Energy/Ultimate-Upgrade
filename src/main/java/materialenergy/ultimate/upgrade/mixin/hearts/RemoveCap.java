@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.mixin;
+package materialenergy.ultimate.upgrade.mixin.hearts;
 
 import net.minecraft.entity.attribute.ClampedEntityAttribute;
 import org.spongepowered.asm.mixin.Final;

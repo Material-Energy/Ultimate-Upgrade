@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.mixin;
+package materialenergy.ultimate.upgrade.mixin.progression;
 
 import materialenergy.ultimate.upgrade.registry.UUItems;
 import net.minecraft.entity.Entity;

@@ -1,7 +1,7 @@
 package materialenergy.ultimate.upgrade.registry;
 
 import materialenergy.ultimate.upgrade.enchantments.*;
-import materialenergy.ultimate.upgrade.misc.Rune;
+import materialenergy.ultimate.upgrade.api.Rune;
 import net.minecraft.enchantment.*;
 import net.minecraft.entity.EquipmentSlot;
 import net.minecraft.text.Text;

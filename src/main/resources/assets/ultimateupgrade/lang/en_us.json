@@ -11,5 +11,6 @@
   "item.ultimateupgrade.draconic_trident": "Draconic Trident",
   "effect.ultimateupgrade.incendiary": "Incendiary",
   "death.attack.incinerate": "%s ignited",
-  "container.molten.repair": "Upgrade"
+  "container.molten.repair": "Upgrade",
+  "ultimateupgrade.enderenergy.tooltip": "Ender Energy: "
 }

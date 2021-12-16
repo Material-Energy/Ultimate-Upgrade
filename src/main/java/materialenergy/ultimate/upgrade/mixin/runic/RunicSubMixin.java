@@ -1,16 +1,12 @@
-package materialenergy.ultimate.upgrade.mixin;
+package materialenergy.ultimate.upgrade.mixin.runic;
 
 
-import materialenergy.ultimate.upgrade.misc.Rune;
+import materialenergy.ultimate.upgrade.api.Rune;
+import materialenergy.ultimate.upgrade.mixin.runic.RunicEnchant;
 import net.minecraft.enchantment.*;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Constant;
-import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = {
         ProtectionEnchantment.class,

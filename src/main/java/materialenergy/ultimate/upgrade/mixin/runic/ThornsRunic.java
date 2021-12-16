@@ -1,6 +1,6 @@
 package materialenergy.ultimate.upgrade.mixin.runic;
 
-import materialenergy.ultimate.upgrade.misc.Rune;
+import materialenergy.ultimate.upgrade.api.Rune;
 import materialenergy.ultimate.upgrade.registry.UUEnchantments;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.enchantment.Enchantments;

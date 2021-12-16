@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.mixin;
+package materialenergy.ultimate.upgrade.mixin.hearts;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawableHelper;

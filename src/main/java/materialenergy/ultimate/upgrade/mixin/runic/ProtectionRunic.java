@@ -1,6 +1,6 @@
 package materialenergy.ultimate.upgrade.mixin.runic;
 
-import materialenergy.ultimate.upgrade.misc.Rune;
+import materialenergy.ultimate.upgrade.api.Rune;
 import net.minecraft.enchantment.ProtectionEnchantment;
 import net.minecraft.entity.damage.DamageSource;
 import org.spongepowered.asm.mixin.Final;

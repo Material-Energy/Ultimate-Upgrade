@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.mixin;
+package materialenergy.ultimate.upgrade.mixin.runic;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;

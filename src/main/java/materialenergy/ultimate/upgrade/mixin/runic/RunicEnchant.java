@@ -1,7 +1,7 @@
-package materialenergy.ultimate.upgrade.mixin;
+package materialenergy.ultimate.upgrade.mixin.runic;
 
 
-import materialenergy.ultimate.upgrade.misc.Rune;
+import materialenergy.ultimate.upgrade.api.Rune;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.gui.screen.Screen;

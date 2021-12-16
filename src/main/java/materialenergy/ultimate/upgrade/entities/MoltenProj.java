@@ -25,18 +25,9 @@ public class MoltenProj extends PersistentProjectileEntity {
         super(entityType, world);
     }
 
-    public MoltenProj(World world, double x, double y, double z){
-        super(UUEntities.MOLTEN_ARROW,x,y,z,world);
-        this.setSupercharged(false);
-    }
-
     public MoltenProj(World world, LivingEntity shooter) {
         super(UUEntities.MOLTEN_ARROW,shooter, world);
         this.setSupercharged(false);
-    }
-
-    public void initFromStack(ItemStack stack) {
-
     }
 
     public void setSupercharged(boolean bool){
@@ -96,10 +87,8 @@ public class MoltenProj extends PersistentProjectileEntity {
 
     @Override
     protected void onHit(LivingEntity target) {
-        Entity entity = this.getEffectCause();
-
         if (this.getSupercharged()) {
-            target.damage(UUDamageSource.SOUL_BURN, (float) this.getDamage() * 2);
+            target.damage(UUDamageSource.INCINERATE, (float) this.getDamage() * 2);
         }
         super.onHit(target);
         target.setOnFireFor(5 * (this.getSupercharged() ? 2 : 1));

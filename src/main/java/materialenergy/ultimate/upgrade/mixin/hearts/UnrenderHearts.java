@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.mixin;
+package materialenergy.ultimate.upgrade.mixin.hearts;
 
 import materialenergy.ultimate.upgrade.misc.HealthRenderer;
 import net.minecraft.client.gui.hud.InGameHud;
