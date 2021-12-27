@@ -3,6 +3,7 @@
   "id": "ultimateupgrade",
   "version": "${version}",
 
+  "accessWidener" : "ultimateupgrade.accesswidener",
   "name": "Ultimate Upgrade",
   "description": "Drastically increases progression of Minecraft",
   "authors": [
@@ -12,7 +13,6 @@
     "homepage": "",
     "sources": ""
   },
-
   "license": "CC0-1.0",
   "icon": "assets/ultimateupgrade/icon.png",
 

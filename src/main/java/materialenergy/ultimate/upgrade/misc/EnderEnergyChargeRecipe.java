@@ -19,26 +19,28 @@ public class EnderEnergyChargeRecipe extends SpecialCraftingRecipe {
 
     @Override
     public boolean matches(CraftingInventory inventory, World world) {
-        return processDraconicTridentRecipe(inventory);
+        boolean bl = processDraconicTridentRecipe(inventory);
+        boolean bl2 = processDraconicTotemRecipe(inventory);
+        return bl || bl2;
     }
 
     @Override
     public ItemStack craft(CraftingInventory inventory) {
-        ItemStack itemStack = ItemStack.EMPTY;
+        ItemStack itemStack;
         byte energy = 0;
-        if(processDraconicTridentRecipe(inventory)){
-            for (int k = 0; k < inventory.size(); ++k) {
-                if (k == 1 || k == 5){
-                    ItemStack stack = inventory.getStack(k);
-                    energy += stack.getOrCreateNbt().getByte("EnderEnergy");
-                }
-            }
-            itemStack = UUItems.DRACONIC_TRIDENT.getDefaultStack();
-            if(itemStack.hasNbt()) {
-                itemStack.getNbt().putByte("EnderEnergy", energy);
-            }
+        for (int k = 0; k < inventory.size(); ++k) {
+            ItemStack stack = inventory.getStack(k);
+            if(stack.isOf(UUItems.DRACONIC_CRYSTAL)) energy += stack.getOrCreateNbt().getByte("EnderEnergy");
         }
+        itemStack = getDefault(inventory);
+        if (!itemStack.isEmpty()) itemStack.getOrCreateNbt().putByte("EnderEnergy", energy);
         return itemStack;
+    }
+
+    private ItemStack getDefault(CraftingInventory inventory) {
+        if (processDraconicTridentRecipe(inventory)) return UUItems.DRACONIC_TRIDENT.getDefaultStack();
+        if (processDraconicTotemRecipe(inventory)) return UUItems.DRACONIC_TOTEM.getDefaultStack();
+        else return ItemStack.EMPTY;
     }
 
     @Override
@@ -68,5 +70,41 @@ public class EnderEnergyChargeRecipe extends SpecialCraftingRecipe {
             }
         }
         return recipeComplete == 5;
+    }
+
+    public boolean processDraconicTotemRecipe(CraftingInventory inventory){
+        int recipeComplete = 0;
+        for (int k = 0; k < inventory.size(); ++k) {
+            ItemStack itemStack = inventory.getStack(k);
+            if (k == 0 && itemStack.getItem().equals(Items.TOTEM_OF_UNDYING)){
+                recipeComplete++;
+            }
+            if (k == 1 && itemStack.getItem().equals(Items.ENDER_PEARL)){
+                recipeComplete++;
+            }
+            if (k == 2 && itemStack.getItem().equals(Items.TOTEM_OF_UNDYING)){
+                recipeComplete++;
+            }
+            if (k == 3 && itemStack.getItem().equals(UUItems.DRACONIC_CRYSTAL)){
+                recipeComplete++;
+            }
+            if (k == 4 && itemStack.getItem().equals(Items.TOTEM_OF_UNDYING)){
+                recipeComplete++;
+            }
+            if (k == 5 && itemStack.getItem().equals(UUItems.DRACONIC_CRYSTAL)){
+                recipeComplete++;
+            }
+            if (k == 6 && itemStack.getItem().equals(Items.TOTEM_OF_UNDYING)){
+                recipeComplete++;
+            }
+            if (k == 7 && itemStack.getItem().equals(Items.RESPAWN_ANCHOR)){
+                recipeComplete++;
+            }
+            if (k == 8 && itemStack.getItem().equals(Items.TOTEM_OF_UNDYING)){
+                recipeComplete++;
+            }
+
+        }
+        return recipeComplete == 9;
     }
 }

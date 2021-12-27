@@ -1,7 +1,7 @@
 package materialenergy.ultimate.upgrade.mixin.progression;
 
-import materialenergy.ultimate.upgrade.item.DraconicBaseItem;
-import materialenergy.ultimate.upgrade.item.DraconicTrident;
+import materialenergy.ultimate.upgrade.item.draconic.DraconicBaseItem;
+import materialenergy.ultimate.upgrade.item.draconic.DraconicTridentItem;
 import materialenergy.ultimate.upgrade.mixin.api.BeaconLevelGrabber;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -18,14 +18,11 @@ import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-
-import java.util.UUID;
 
 @Mixin(ItemEntity.class)
 public abstract class DraconicItemCharge extends Entity {
@@ -33,10 +30,7 @@ public abstract class DraconicItemCharge extends Entity {
 
     private int transformationDelay = 0;
 
-    @Shadow public @Nullable abstract UUID getThrower();
-
     @Shadow public abstract ItemStack getStack();
-
     @Shadow protected abstract MoveEffect getMoveEffect();
 
     public DraconicItemCharge(EntityType<?> type, World world) {
@@ -50,8 +44,7 @@ public abstract class DraconicItemCharge extends Entity {
     public void chargeViaBeacon(CallbackInfo ci){
         Item item = this.getStack().getItem();
         if (this.getEntityWorld().getRegistryKey().equals(World.END) &&
-                item instanceof DraconicBaseItem ||
-                item instanceof DraconicTrident){
+                item instanceof DraconicBaseItem){
             Vec3d pos = this.getPos();
             BlockState block = this.world.getBlockState(new BlockPos(pos).add(0,-1,0));
             BeaconBlockEntity blockEntity = (BeaconBlockEntity) this.world.getBlockEntity(new BlockPos(pos).add(0,-1,0));
@@ -65,21 +58,26 @@ public abstract class DraconicItemCharge extends Entity {
                 if (entity != null) {
                     int levels = entity.experienceLevel;
                     if (levels >= 15){
-                        byte maxed = (byte) (DraconicBaseItem.getEnderEnergy(this.getStack()) + 1);
-                        if (this.transformationDelay == 20 && maxed <= 64){
+                        int maxed = (byte) (DraconicBaseItem.getEnderEnergy(this.getStack()) + 1);
+                        if (this.transformationDelay == 20 && maxed <= ((DraconicBaseItem) this.getStack().getItem()).getTotalEnergy()){
                             this.world.playSound(entity, new BlockPos(pos), SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.BLOCKS, 1.0f, 1.0f);
-                            DraconicBaseItem.writeEnderEnergy(this.getStack(), maxed);
+                            DraconicBaseItem.writeEnderEnergy(this.getStack(), (short) maxed);
                             entity.addExperienceLevels(-1);
-                            double d = pos.getX() + 0.55 - (double)(random.nextFloat() * 0.1f);
-                            double e = pos.getY() + 0.55 - (double)(random.nextFloat() * 0.1f);
-                            double f = pos.getZ() + 0.55 - (double)(random.nextFloat() * 0.1f);
-                            double g = 0.4f - (random.nextFloat() + random.nextFloat()) * 0.4f;
-                            world.addParticle(ParticleTypes.END_ROD, d + g, e + g, f + g, random.nextGaussian() * 0.005, random.nextGaussian() * 0.005, random.nextGaussian() * 0.005);
+                            for (int i = 0; i < 20; i++){
+                                double d = new BlockPos(pos).getX() + random.nextDouble();
+                                double e = new BlockPos(pos).getY() + 0.8;
+                                double f = new BlockPos(pos).getZ() + random.nextDouble();
+                                world.addParticle(ParticleTypes.END_ROD, d, e, f, 0.0, 0.5, 0.0);
+                            }
                             this.transformationDelay = 0;
                         }
                         this.transformationDelay++;
                     }
                 }
+                double d = new BlockPos(pos).getX() + random.nextDouble();
+                double e = new BlockPos(pos).getY() + 0.8;
+                double f = new BlockPos(pos).getZ() + random.nextDouble();
+                world.addParticle(ParticleTypes.END_ROD, d, e, f, 0.0, 0.4, 0.0);
             }
         }
     }

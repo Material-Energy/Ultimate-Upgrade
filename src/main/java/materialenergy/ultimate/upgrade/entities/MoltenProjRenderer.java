@@ -15,9 +15,9 @@ import net.minecraft.util.math.Vec3f;
 
 public class MoltenProjRenderer<M extends MoltenProj> extends ProjectileEntityRenderer<MoltenProj> {
 
-    public static final Identifier TEXTURE = new Identifier("ultimateupgrade:textures/entity/projectiles/molten_arrow.png");
+    public static final Identifier TEXTURE = new Identifier("ultimateupgrade","textures/entity/projectiles/molten_arrow.png");
 
-    public static final Identifier TEXTURE_ = new Identifier("ultimateupgrade:textures/entity/projectiles/soul_arrow.png");
+    public static final Identifier TEXTURE_ = new Identifier("ultimateupgrade","textures/entity/projectiles/soul_arrow.png");
 
     public MoltenProjRenderer(EntityRendererFactory.Context ctx) {
         super(ctx);

@@ -1,0 +1,38 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0":"ultimateupgrade:item/draconic_totem_stage_0"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "energy": 0
+      },
+      "model": "ultimateupgrade:item/draconic_totem_stage_1"
+    },
+    {
+      "predicate": {
+        "energy": 0.25
+      },
+      "model": "ultimateupgrade:item/draconic_totem_stage_2"
+    },
+    {
+      "predicate": {
+        "energy": 0.5
+      },
+      "model": "ultimateupgrade:item/draconic_totem_stage_3"
+    },
+    {
+      "predicate": {
+        "energy": 0.75
+      },
+      "model": "ultimateupgrade:item/draconic_totem_stage_4"
+    },
+    {
+      "predicate": {
+        "energy": 1
+      },
+      "model": "ultimateupgrade:item/draconic_totem_stage_5"
+    }
+  ]
+}

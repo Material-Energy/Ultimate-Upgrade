@@ -16,7 +16,7 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3f;
 
 public class DraconicTridentRenderer<M extends Entity> extends EntityRenderer<DraconicTridentEntity> {
-    public static final Identifier TEXTURE = new Identifier("textures/entity/trident.png");
+    public static final Identifier TEXTURE = new Identifier("ultimateupgrade","textures/entity/draconic_trident.png");
     private final TridentEntityModel model;
 
     public DraconicTridentRenderer(EntityRendererFactory.Context context) {

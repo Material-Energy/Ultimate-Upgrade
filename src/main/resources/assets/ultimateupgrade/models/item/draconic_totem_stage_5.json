@@ -1,0 +1,6 @@
+{
+  "parent": "ultimateupgrade:item/draconic_totem",
+  "textures": {
+    "layer0": "ultimateupgrade:item/draconic_totem_stage_4"
+  }
+}

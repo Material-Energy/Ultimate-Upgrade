@@ -3,7 +3,9 @@ package materialenergy.ultimate.upgrade.mixin.progression;
 import materialenergy.ultimate.upgrade.registry.UUItems;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.BlockView;
 import org.spongepowered.asm.mixin.Mixin;
@@ -23,6 +25,13 @@ public class Ultimatum {
         if (f == -1.0f && !player.getMainHandStack().getItem().equals(UUItems.ULTIMATUM)) {
             return 0.0f;
         } else if (f == -1.0f && player.getMainHandStack().getItem().equals(UUItems.ULTIMATUM)){
+            player.world.spawnEntity(new ItemEntity(
+                    player.world,
+                    pos.getX(),
+                    pos.getY(),
+                    pos.getZ(),
+                    new ItemStack(state.getBlock().asItem())
+            ));
             return 1.0f;
         } else {
             int i = player.canHarvest(state) ? 30 : 100;

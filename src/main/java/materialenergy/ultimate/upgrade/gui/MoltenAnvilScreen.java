@@ -17,7 +17,7 @@ import net.minecraft.util.Identifier;
 @Environment(value=EnvType.CLIENT)
 public class MoltenAnvilScreen
         extends ForgingScreen<MoltenAnvilScreenHandler> {
-    private static final Identifier TEXTURE = new Identifier("ultimateupgrade:textures/gui/container/molten_anvil.png");
+    private static final Identifier TEXTURE = new Identifier("ultimateupgrade","textures/gui/container/molten_anvil.png");
     private final PlayerEntity player;
 
     public MoltenAnvilScreen(MoltenAnvilScreenHandler handler, PlayerInventory inventory, Text title) {

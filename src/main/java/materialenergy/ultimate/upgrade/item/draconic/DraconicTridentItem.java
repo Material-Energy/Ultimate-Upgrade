@@ -1,8 +1,9 @@
-package materialenergy.ultimate.upgrade.item;
+package materialenergy.ultimate.upgrade.item.draconic;
 
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import materialenergy.ultimate.upgrade.entities.DraconicTridentEntity;
+import materialenergy.ultimate.upgrade.item.draconic.DraconicBaseItem;
 import materialenergy.ultimate.upgrade.registry.UUEffects;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.minecraft.block.BlockState;
@@ -25,8 +26,6 @@ import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
-import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
@@ -40,10 +39,10 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 import java.util.Random;
 
-public class DraconicTrident extends TridentItem {
+public class DraconicTridentItem extends DraconicBaseItem{
     private final ImmutableMultimap<EntityAttribute, EntityAttributeModifier> attributeModifiers;
 
-    public DraconicTrident(FabricItemSettings fabricItemSettings) {
+    public DraconicTridentItem(FabricItemSettings fabricItemSettings) {
         super(fabricItemSettings);
         ImmutableMultimap.Builder<EntityAttribute, EntityAttributeModifier> builder = ImmutableMultimap.builder();
         builder.put(EntityAttributes.GENERIC_ATTACK_DAMAGE, new EntityAttributeModifier(ATTACK_DAMAGE_MODIFIER_ID, "Tool modifier", 12.0D, EntityAttributeModifier.Operation.ADDITION));
@@ -65,14 +64,6 @@ public class DraconicTrident extends TridentItem {
         return 36000;
     }
 
-    @Override
-    public boolean hasGlint(ItemStack stack) {
-        NbtCompound nbt = stack.getNbt();
-        if (nbt != null) {
-            return nbt.getByte("EnderEnergy") > 0;
-        }
-        return false;
-    }
 
     @Override
     public void onStoppedUsing(ItemStack stack, World world, LivingEntity user, int remainingUseTicks) {
@@ -173,11 +164,5 @@ public class DraconicTrident extends TridentItem {
     @Override
     public int getEnchantability() {
         return 3;
-    }
-
-    @Override
-    public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
-        DraconicBaseItem.addTooltip(stack, tooltip);
-        super.appendTooltip(stack, world, tooltip, context);
     }
 }

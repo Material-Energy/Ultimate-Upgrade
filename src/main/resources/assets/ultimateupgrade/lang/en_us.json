@@ -11,11 +11,17 @@
   "item.ultimateupgrade.draconic_trident": "Draconic Trident",
   "item.ultimateupgrade.draconic_crystal": "Draconic Crystal",
   "item.ultimateupgrade.raw_draconic_crystal": "Raw Draconic Crystal",
-  "item.ultimateupgrade.draconic_totem": "Draconic Totem",
+  "item.ultimateupgrade.draconic_totem": "Totem of Rewinding",
+  "item.ultimateupgrade.draconic_crossbow": "Draconic Crossbow",
+  "itemGroup.ultimateupgrade.main": "Ultimate Upgrade (Main)",
   "effect.ultimateupgrade.incendiary": "Incendiary",
   "effect.ultimateupgrade.void_leech": "Void Leech",
   "death.attack.incinerate": "%s ignited",
   "death.attack.void": "%s vanished",
   "container.molten.repair": "Upgrade",
-  "ultimateupgrade.enderenergy.tooltip": "Ender Energy: "
+  "ultimateupgrade.enderenergy.tooltip": "Ender Energy: ",
+  "ultimateupgrade.rewind.tooltip": "Rewind (Seconds): ",
+  "commands.charge.successful": "Successfully charged %s",
+  "commands.charge.fail.out_of_bounds": "Too much ender energy!",
+  "commands.charge.fail.unchargeable": "This item is unchargeable!"
 }

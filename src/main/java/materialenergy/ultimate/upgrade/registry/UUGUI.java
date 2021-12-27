@@ -4,7 +4,6 @@ import materialenergy.ultimate.upgrade.gui.MoltenAnvilScreen;
 import materialenergy.ultimate.upgrade.gui.MoltenAnvilScreenHandler;
 import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
-import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ingame.ScreenHandlerProvider;
 import net.minecraft.screen.ScreenHandler;

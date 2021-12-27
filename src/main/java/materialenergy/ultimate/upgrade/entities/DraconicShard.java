@@ -16,6 +16,7 @@ import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.nbt.NbtCompound;
 import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
@@ -46,13 +47,14 @@ public class DraconicShard extends PersistentProjectileEntity {
         this.dataTracker.startTracking(OVERFLOW, random.nextBoolean());
     }
 
-    public static void explosion(double x, double y, double z, World world, LivingEntity owner, int amount, int level) {
+    public static void explosion(double x, double y, double z, World world, LivingEntity owner, int amount, int level, NbtCompound nbt) {
         for (int i = 0; i < amount; i++) {
             DraconicShard arrow = new DraconicShard(x,y,z,world,owner);
             arrow.setProperties(owner, (float)random.nextInt(10000)/10000, i*2, 0.2F, (float)random.nextInt(10000)/5000, (float)random.nextInt(10000)/100);
             arrow.setPos(x,y,z);
             arrow.setPierceLevel((byte)30);
             arrow.setImpalingDamageLevel(level);
+            arrow.setDamage(nbt.getShort("EnderEnergy") * 5);
             world.spawnEntity(arrow);
         }
     }

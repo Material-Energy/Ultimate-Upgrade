@@ -1,6 +1,6 @@
 package materialenergy.ultimate.upgrade.misc;
 
-import materialenergy.ultimate.upgrade.item.DraconicBaseItem;
+import materialenergy.ultimate.upgrade.item.draconic.DraconicBaseItem;
 import net.fabricmc.fabric.api.item.v1.CustomDamageHandler;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;

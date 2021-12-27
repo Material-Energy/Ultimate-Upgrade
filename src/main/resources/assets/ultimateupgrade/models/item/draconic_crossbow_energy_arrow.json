@@ -1,0 +1,6 @@
+{
+  "parent": "ultimateupgrade:item/draconic_crossbow",
+  "textures": {
+    "layer0": "ultimateupgrade:item/draconic_crossbow_energy_arrow"
+  }
+}
