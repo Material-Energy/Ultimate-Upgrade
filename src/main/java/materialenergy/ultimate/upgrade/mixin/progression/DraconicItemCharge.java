@@ -62,7 +62,6 @@ public abstract class DraconicItemCharge extends Entity {
                         if (this.transformationDelay == 20 && maxed <= ((DraconicBaseItem) this.getStack().getItem()).getTotalEnergy()){
                             this.world.playSound(entity, new BlockPos(pos), SoundEvents.BLOCK_BEACON_ACTIVATE, SoundCategory.BLOCKS, 1.0f, 1.0f);
                             DraconicBaseItem.writeEnderEnergy(this.getStack(), (short) maxed);
-                            entity.addExperienceLevels(-1);
                             for (int i = 0; i < 20; i++){
                                 double d = new BlockPos(pos).getX() + random.nextDouble();
                                 double e = new BlockPos(pos).getY() + 0.8;

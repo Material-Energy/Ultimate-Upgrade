@@ -37,8 +37,6 @@ public abstract class DragonTotem extends Entity {
     @Shadow public abstract void setHealth(float v);
     @Shadow public abstract ItemStack getStackInHand(Hand hand);
 
-    @Shadow public abstract void endCombat();
-
     public DragonTotem(EntityType<?> type, World world) {
         super(type, world);
     }
@@ -60,13 +58,14 @@ public abstract class DragonTotem extends Entity {
             break;
         }
         if (DRitemStack != null) {
-            this.setHealth(this.getMaxHealth());
+            int power = DraconicBaseItem.getEnderEnergy(DRitemStack);
+            int total = ((DraconicBaseItem)DRitemStack.getItem()).getTotalEnergy();
+            this.setHealth(Math.min(this.getMaxHealth() * power/(float)total, 0.01f));
             int rewindAmount = DraconicTotemItem.getRewind(DRitemStack);
-            int enderEnergy = DraconicBaseItem.getEnderEnergy(DRitemStack);
-            enderEnergy = Math.min(enderEnergy, rewindAmount);
             Map<Vec3d, World> posToMap = this.getPosAt(
-                    enderEnergy != 0 ? enderEnergy : 10
+                    rewindAmount != 0 ? rewindAmount : 10
             );
+            this.fallDistance = 0;
             for (Vec3d posTo : posToMap.keySet() ) {
                 this.teleportOutWorld(this, (ServerWorld)posToMap.get(posTo), posTo.x, posTo.y, posTo.z);
             }
@@ -76,10 +75,11 @@ public abstract class DragonTotem extends Entity {
     }
 
     public Map<Vec3d, World> getPosAt(int secondsBefore) {
+        int totalIndex = this.posList.size() - 1;
         if (secondsBefore < this.posList.size()){
-            return this.posList.get(this.posList.size() - secondsBefore - 1);
+            return this.posList.get(totalIndex - secondsBefore);
         } else {
-            return this.posList.get(this.posList.size() - 1);
+            return this.posList.get(totalIndex);
         }
     }
 

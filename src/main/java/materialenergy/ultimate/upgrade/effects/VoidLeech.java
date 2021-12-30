@@ -1,6 +1,5 @@
 package materialenergy.ultimate.upgrade.effects;
 
-import materialenergy.ultimate.upgrade.registry.UUDamageSource;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffect;

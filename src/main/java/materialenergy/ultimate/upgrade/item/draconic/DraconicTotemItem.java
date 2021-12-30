@@ -1,5 +1,6 @@
 package materialenergy.ultimate.upgrade.item.draconic;
 
+import materialenergy.ultimate.upgrade.api.MouseWheel;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.item.TooltipContext;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,7 +16,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
-public class DraconicTotemItem extends DraconicBaseItem{
+public class DraconicTotemItem extends DraconicBaseItem implements MouseWheel {
     public DraconicTotemItem(Settings settings) {
         super(settings);
     }
@@ -45,40 +46,27 @@ public class DraconicTotemItem extends DraconicBaseItem{
 
 
     @Override
-    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
-        ItemStack itemStack = user.getStackInHand(hand);
-        if (itemStack.getItem() instanceof DraconicTotemItem){
-            int rewind = DraconicTotemItem.getRewind(itemStack);
-            if (rewind > 63){
-                rewind = 1;
-            } else {
-                if (Screen.hasAltDown() && Screen.hasShiftDown()) {
-                    rewind -= 2;
-                } else if (Screen.hasAltDown() && Screen.hasControlDown()) {
-                    rewind -= 4;
-                } else if (Screen.hasAltDown()) {
-                    rewind--;
-                } else if (Screen.hasShiftDown()) {
-                    rewind += 2;
-                } else if (Screen.hasControlDown()) {
-                    rewind += 4;
-                } else {
-                    rewind++;
-                }
-            }
-            DraconicTotemItem.writeRewind(itemStack, rewind);
-            user.sendMessage(new TranslatableText("ultimateupgrade.rewind.tooltip").append(String.valueOf(rewind)), true);
-            return TypedActionResult.success(itemStack);
-        }
-        return super.use(world, user, hand);
-    }
-
-    @Override
     public void appendTooltip(ItemStack stack, @Nullable World world, List<Text> tooltip, TooltipContext context) {
         super.appendTooltip(stack, world, tooltip, context);
         int rewind = DraconicTotemItem.getRewind(stack);
-        int energy = DraconicBaseItem.getEnderEnergy(stack);
-        rewind = Math.min(rewind, energy);
         tooltip.add(new TranslatableText("ultimateupgrade.rewind.tooltip").append(String.valueOf(rewind)).formatted(Formatting.GRAY));
+    }
+
+    @Override
+    public void onMouseScrolled(ItemStack stack, float scrollAmount, PlayerEntity user) {
+        if (scrollAmount > 0.0) {
+            scrollAmount = 1.0F;
+        }
+        if (scrollAmount < 0.0) {
+            scrollAmount = -1.0F;
+        }
+        scrollAmount += DraconicTotemItem.getRewind(stack);
+        if(scrollAmount <= 0){
+            scrollAmount = 1;
+        } else if (scrollAmount > 100){
+            scrollAmount = 100;
+        }
+        DraconicTotemItem.writeRewind(stack, (int) scrollAmount);
+        user.sendMessage(new TranslatableText("ultimateupgrade.rewind.tooltip").append(String.valueOf(scrollAmount)), true);
     }
 }

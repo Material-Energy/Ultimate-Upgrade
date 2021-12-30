@@ -1,9 +1,8 @@
 package materialenergy.ultimate.upgrade.entities;
 
-import materialenergy.ultimate.upgrade.registry.UUDamageSource;
 import materialenergy.ultimate.upgrade.registry.UUEffects;
 import materialenergy.ultimate.upgrade.registry.UUEntities;
-import net.minecraft.entity.Entity;
+import materialenergy.ultimate.upgrade.registry.UUMisc;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.data.DataTracker;
@@ -88,7 +87,7 @@ public class MoltenProj extends PersistentProjectileEntity {
     @Override
     protected void onHit(LivingEntity target) {
         if (this.getSupercharged()) {
-            target.damage(UUDamageSource.INCINERATE, (float) this.getDamage() * 2);
+            target.damage(UUMisc.INCINERATE, (float) this.getDamage() * 2);
         }
         super.onHit(target);
         target.setOnFireFor(5 * (this.getSupercharged() ? 2 : 1));

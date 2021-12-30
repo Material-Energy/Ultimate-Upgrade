@@ -16,7 +16,6 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
 import net.minecraft.world.World;
-import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Predicate;
 
@@ -42,19 +41,18 @@ public class DraconicCrossbowItem extends DraconicBaseItem {
     }
 
     public static int getPullTime(ItemStack stack) {
-        int i = DraconicBaseItem.getEnderEnergy(stack);
-        return i > 25 ? 0 : 25 - i;
+        return 15 * (stack.isEmpty() ? 0 : 1);
     }
 
     @Override
-    public TypedActionResult<ItemStack> use(World world, @NotNull PlayerEntity user, Hand hand) {
+    public TypedActionResult<ItemStack> use(World world, PlayerEntity user, Hand hand) {
         ItemStack itemStack = user.getStackInHand(hand);
         if (CrossbowItem.isCharged(itemStack)) {
             this.shoot(world, user, hand, itemStack, DraconicCrossbowItem.getArrow(itemStack));
             CrossbowItem.setCharged(itemStack, false);
             return TypedActionResult.consume(itemStack);
         } else {
-            if (DraconicBaseItem.getEnderEnergy(itemStack) > 0 || !this.getArrowType(user).isEmpty()) {
+            if (!this.getArrowType(user, itemStack).isEmpty()) {
                 user.setCurrentHand(hand);
                 return TypedActionResult.consume(itemStack);
             }
@@ -62,9 +60,14 @@ public class DraconicCrossbowItem extends DraconicBaseItem {
         return TypedActionResult.fail(itemStack);
     }
 
-    private ItemStack getArrowType(@NotNull PlayerEntity user){
+    private ItemStack getArrowType(PlayerEntity user, ItemStack cb){
         PlayerInventory inventory = user.getInventory();
-        Predicate<ItemStack> predicate = stack -> stack.isIn(ItemTags.ARROWS);
+        Predicate<ItemStack> predicate;
+        if (DraconicBaseItem.getEnderEnergy(cb) > 0){
+            predicate = stack -> stack.isOf(Items.SPECTRAL_ARROW);
+        } else {
+            predicate = stack -> stack.isIn(ItemTags.ARROWS);
+        }
         ItemStack itemStack = RangedWeaponItem.getHeldProjectile(user, predicate);
         if (!itemStack.isEmpty()) {
             return itemStack;
@@ -77,11 +80,11 @@ public class DraconicCrossbowItem extends DraconicBaseItem {
         return user.getAbilities().creativeMode ? new ItemStack(Items.ARROW) : ItemStack.EMPTY;
     }
 
-    private static boolean getArrow(@NotNull ItemStack itemStack) {
+    private static boolean getArrow(ItemStack itemStack) {
         return itemStack.getOrCreateNbt().getBoolean("isNonEnergyArrow");
     }
 
-    public void shoot(@NotNull World world, LivingEntity shooter, Hand hand, ItemStack cb, boolean arrow) {
+    public void shoot(World world, LivingEntity shooter, Hand hand, ItemStack cb, boolean arrow) {
         if (world.isClient){
             return;
         }
@@ -118,7 +121,7 @@ public class DraconicCrossbowItem extends DraconicBaseItem {
         float f = DraconicCrossbowItem.getPullProgress(i, stack);
         if (f >= 1.0f && !CrossbowItem.isCharged(stack)) {
             CrossbowItem.setCharged(stack, true);
-            DraconicCrossbowItem.setArrow(stack, !this.getArrowType((PlayerEntity) user).isEmpty() && DraconicBaseItem.getEnderEnergy(stack) == 0);
+            DraconicCrossbowItem.setArrow(stack, !this.getArrowType((PlayerEntity) user, stack).isEmpty() && DraconicBaseItem.getEnderEnergy(stack) == 0);
             SoundCategory soundCategory = SoundCategory.PLAYERS;
             world.playSound(null, user.getX(), user.getY(), user.getZ(), SoundEvents.ITEM_CROSSBOW_LOADING_END, soundCategory, 1.0f, 1.0f / (world.getRandom().nextFloat() * 0.5f + 1.0f) + 0.2f);
         }

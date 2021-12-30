@@ -1,10 +1,11 @@
 package materialenergy.ultimate.upgrade.entities;
 
-import materialenergy.ultimate.upgrade.registry.UUEffects;
 import materialenergy.ultimate.upgrade.registry.UUEntities;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.LightningEntity;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.particle.ParticleTypes;
@@ -23,11 +24,6 @@ public class DraconicArrow extends PersistentProjectileEntity {
 
     public DraconicArrow(EntityType<? extends DraconicArrow> entityType, World world) {
         super(entityType, world);
-    }
-
-    public DraconicArrow(double x, double y, double z, World world) {
-        super(UUEntities.DRACONIC_FLARE, x, y, z, world);
-        this.setNoGravity(true);
     }
 
     public DraconicArrow(LivingEntity owner, World world, int energy) {
@@ -76,10 +72,7 @@ public class DraconicArrow extends PersistentProjectileEntity {
                 for (LivingEntity livingEntity : list) {
                     double d = this.squaredDistanceTo(livingEntity);
                     if (!(d < 16.0)) continue;
-                    LightningEntity lightning = EntityType.LIGHTNING_BOLT.create(world);
-                    assert lightning != null;
-                    lightning.setPosition(livingEntity.getX(), livingEntity.getY(), livingEntity.getZ());
-                    this.world.spawnEntity(lightning);
+                    livingEntity.damage(DamageSource.explosion((LivingEntity) this.getOwner()), 35.0f);
                 }
             } else {
                 LightningEntity lightning = EntityType.LIGHTNING_BOLT.create(world);

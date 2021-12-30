@@ -54,7 +54,7 @@ public class DraconicBaseItem extends Item {
     @Override
     public void onCraft(ItemStack stack, World world, PlayerEntity player) {
         NbtCompound nbtCompound = stack.getOrCreateNbt();
-        nbtCompound.putShort(ENERGY_KEY, (short) 0);
+        if (nbtCompound.getShort(ENERGY_KEY) == 0) nbtCompound.putShort(ENERGY_KEY, (short) 0);
     }
 
     public static void writeEnderEnergy(ItemStack stack, short amount){

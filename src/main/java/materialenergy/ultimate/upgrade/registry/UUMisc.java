@@ -1,19 +1,29 @@
 package materialenergy.ultimate.upgrade.registry;
 
 import materialenergy.ultimate.upgrade.item.draconic.DraconicBaseItem;
+import materialenergy.ultimate.upgrade.misc.CustomDamageSource;
 import net.fabricmc.fabric.api.loot.v1.event.LootTableLoadingCallback;
 import net.fabricmc.fabric.api.object.builder.v1.client.model.FabricModelPredicateProviderRegistry;
-import net.minecraft.client.item.ModelPredicateProviderRegistry;
+import net.fabricmc.fabric.api.tag.TagFactory;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.CrossbowItem;
-import net.minecraft.item.Items;
+import net.minecraft.item.Item;
 import net.minecraft.loot.LootPool;
 import net.minecraft.loot.entry.ItemEntry;
 import net.minecraft.loot.function.SetCountLootFunction;
 import net.minecraft.loot.provider.number.ConstantLootNumberProvider;
 import net.minecraft.loot.provider.number.UniformLootNumberProvider;
+import net.minecraft.tag.Tag;
 import net.minecraft.util.Identifier;
 
+import static materialenergy.ultimate.upgrade.registry.Registries.id;
+
 public class UUMisc {
+    public static final Tag<Item> TRIDENTS = TagFactory.ITEM.create(id("tridents"));
+    public static final Tag<Item> SCROLLABLE = TagFactory.ITEM.create(id("scrollable"));
+
+    public static final DamageSource INCINERATE = new CustomDamageSource("incinerate").setBypassesArmor().setFire();
+    public static final DamageSource VOID = new CustomDamageSource("void").setBypassesArmor().setOutOfWorld();
 
 
     public static void init() {
@@ -30,7 +40,6 @@ public class UUMisc {
 
                 }
         );
-
     }
 
     public static void initClient(){

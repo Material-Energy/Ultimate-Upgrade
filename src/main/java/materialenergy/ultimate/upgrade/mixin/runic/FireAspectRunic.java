@@ -1,14 +1,13 @@
 package materialenergy.ultimate.upgrade.mixin.runic;
 
-import materialenergy.ultimate.upgrade.registry.UUDamageSource;
 import materialenergy.ultimate.upgrade.registry.UUEnchantments;
+import materialenergy.ultimate.upgrade.registry.UUMisc;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.math.Box;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -36,7 +35,7 @@ public abstract class FireAspectRunic extends LivingEntity{
             for (Entity entity : entityList){
                 if (entity instanceof LivingEntity){
                     entity.setOnFireFor((int) (4 * Math.pow(level, 2)));
-                    entity.damage(UUDamageSource.INCINERATE, (float) (6.0f * Math.pow(level, 2)));
+                    entity.damage(UUMisc.INCINERATE, (float) (6.0f * Math.pow(level, 2)));
                 }
             }
         }

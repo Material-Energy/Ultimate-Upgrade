@@ -1,7 +1,7 @@
 package materialenergy.ultimate.upgrade.mixin.progression;
 
-import materialenergy.ultimate.upgrade.registry.UUDamageSource;
 import materialenergy.ultimate.upgrade.registry.UUEffects;
+import materialenergy.ultimate.upgrade.registry.UUMisc;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -23,7 +23,7 @@ public abstract class IncendiaryMixin {
              effectInstance = ((LivingEntity) instance).getStatusEffect(UUEffects.FIRE_WEAKNESS);
         }
         if (effectInstance != null){
-            return instance.damage(UUDamageSource.INCINERATE, amount + effectInstance.getAmplifier());
+            return instance.damage(UUMisc.INCINERATE, amount + effectInstance.getAmplifier());
         } else {
             return instance.damage(source, amount);
         }

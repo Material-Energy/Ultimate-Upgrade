@@ -4,6 +4,7 @@
   "package": "materialenergy.ultimate.upgrade.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "api.AccessMouseWheel",
     "api.BeaconLevelGrabber",
     "display.BakedCustomModel",
     "display.DraconicTridentDisplay",
@@ -12,6 +13,7 @@
     "display.PlayerEntityArmModel",
     "hearts.FixArmor",
     "hearts.ModifyFallback",
+    "hearts.ModifyModifiedHealth",
     "hearts.RemoveCap",
     "hearts.UnrenderHearts",
     "progression.DraconicItemCharge",
@@ -21,6 +23,7 @@
     "progression.IncendiaryMixin",
     "progression.IronFireproof",
     "progression.LavaCrafting",
+    "progression.MoreDamage",
     "progression.Ultimatum",
     "runic.FireAspectRunic",
     "runic.ImpalingDamageAll",

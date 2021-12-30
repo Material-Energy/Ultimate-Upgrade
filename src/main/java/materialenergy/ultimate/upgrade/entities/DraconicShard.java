@@ -1,10 +1,8 @@
 package materialenergy.ultimate.upgrade.entities;
 
-import materialenergy.ultimate.upgrade.registry.UUDamageSource;
 import materialenergy.ultimate.upgrade.registry.UUEffects;
 import materialenergy.ultimate.upgrade.registry.UUEntities;
-import net.minecraft.block.HoneyBlock;
-import net.minecraft.client.particle.Particle;
+import materialenergy.ultimate.upgrade.registry.UUMisc;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
@@ -13,11 +11,9 @@ import net.minecraft.entity.data.TrackedData;
 import net.minecraft.entity.data.TrackedDataHandlerRegistry;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.projectile.PersistentProjectileEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.nbt.NbtCompound;
-import net.minecraft.particle.ParticleTypes;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.hit.EntityHitResult;
@@ -68,7 +64,7 @@ public class DraconicShard extends PersistentProjectileEntity {
     protected void onEntityHit(EntityHitResult entityHitResult) {
         super.onEntityHit(entityHitResult);
         Entity entity = entityHitResult.getEntity();
-        entity.damage(UUDamageSource.VOID, 10.0f + this.IDL * 2.5f);
+        entity.damage(UUMisc.VOID, 10.0f + this.IDL * 2.5f);
         playSound(this.getHitSound(), this.getActivated() ? 8 : 4, 0);
         if (entity instanceof LivingEntity){
             ((LivingEntity) entity).addStatusEffect(new StatusEffectInstance(UUEffects.VOID_LEECH,20,1));
