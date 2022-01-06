@@ -1,6 +1,8 @@
 package materialenergy.ultimate.upgrade.item.draconic;
 
 import materialenergy.ultimate.upgrade.entities.DraconicArrow;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.enchantment.Enchantments;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -41,7 +43,8 @@ public class DraconicCrossbowItem extends DraconicBaseItem {
     }
 
     public static int getPullTime(ItemStack stack) {
-        return 15 * (stack.isEmpty() ? 0 : 1);
+        int i = EnchantmentHelper.getLevel(Enchantments.QUICK_CHARGE, stack);
+        return i == 0 ? 15 : 15 - 5 * Math.min(i, 2);
     }
 
     @Override
@@ -77,7 +80,7 @@ public class DraconicCrossbowItem extends DraconicBaseItem {
             if (!predicate.test(itemStack2)) continue;
             return itemStack2;
         }
-        return user.getAbilities().creativeMode ? new ItemStack(Items.ARROW) : ItemStack.EMPTY;
+        return user.getAbilities().creativeMode ? new ItemStack(Items.SPECTRAL_ARROW) : ItemStack.EMPTY;
     }
 
     private static boolean getArrow(ItemStack itemStack) {

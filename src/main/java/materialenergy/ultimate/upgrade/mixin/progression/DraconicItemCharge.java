@@ -1,7 +1,7 @@
 package materialenergy.ultimate.upgrade.mixin.progression;
 
+import materialenergy.ultimate.upgrade.api.UUtil;
 import materialenergy.ultimate.upgrade.item.draconic.DraconicBaseItem;
-import materialenergy.ultimate.upgrade.item.draconic.DraconicTridentItem;
 import materialenergy.ultimate.upgrade.mixin.api.BeaconLevelGrabber;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
@@ -77,6 +77,13 @@ public abstract class DraconicItemCharge extends Entity {
                 double e = new BlockPos(pos).getY() + 0.8;
                 double f = new BlockPos(pos).getZ() + random.nextDouble();
                 world.addParticle(ParticleTypes.END_ROD, d, e, f, 0.0, 0.4, 0.0);
+            }
+        }
+        if (this.world.getBlockState(this.getBlockPos().add(0,-1,0)).isOf(Blocks.BEACON)){
+            int x = this.getBlockX();
+            int z = this.getBlockZ();
+            if (UUtil.compareVector(this.getVelocity(), new Vec3d(0.5, 0.5, 0.5), true)){
+                this.setPos(x + 0.5, this.getPos().y, z + 0.5);
             }
         }
     }

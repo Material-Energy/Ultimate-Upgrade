@@ -66,7 +66,7 @@ public class MoltenAnvilScreenHandler extends ForgingScreenHandler {
                 for (Enchantment enchant: Enchantments2.keySet()){
                     int level2 = Enchantments1.get(enchantment);
                     if (enchant.equals(enchantment) && level2 == enchant.getMaxLevel()){
-                        Enchantment runicEnchantment = UUEnchantments.getFromId(enchant.getName(enchant.getMaxLevel()));
+                        Enchantment runicEnchantment = UUEnchantments.getFromId(enchant);
                         if (runicEnchantment != null){
                             Enchants1.remove(enchantment);
                             Enchants2.remove(enchant);
