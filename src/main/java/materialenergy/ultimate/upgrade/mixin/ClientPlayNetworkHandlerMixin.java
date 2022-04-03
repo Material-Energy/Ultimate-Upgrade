@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.mixin.progression;
+package materialenergy.ultimate.upgrade.mixin;
 
 import materialenergy.ultimate.upgrade.registry.UUItems;
 import net.minecraft.client.MinecraftClient;
@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ClientPlayNetworkHandler.class)
-public class DraconicTotemDisplay {
+public class ClientPlayNetworkHandlerMixin {
     @Final
     @Shadow
     private MinecraftClient client;

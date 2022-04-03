@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.mixin.progression;
+package materialenergy.ultimate.upgrade.mixin;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Item.class)
-public abstract class IronFireproof {
+public abstract class ItemMixin {
 
     @Shadow @Final
     private boolean fireproof;

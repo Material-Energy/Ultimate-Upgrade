@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.mixin.display;
+package materialenergy.ultimate.upgrade.mixin;
 
 import materialenergy.ultimate.upgrade.registry.UUItems;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntityRenderer.class)
-public class PlayerEntityArmModel {
+public class PlayerEntityRendererMixin {
     @Inject(
             method = "getArmPose",
             at = @At("HEAD"),

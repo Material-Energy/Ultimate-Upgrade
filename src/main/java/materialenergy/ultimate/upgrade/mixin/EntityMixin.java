@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.mixin.progression;
+package materialenergy.ultimate.upgrade.mixin;
 
 import materialenergy.ultimate.upgrade.registry.UUEffects;
 import materialenergy.ultimate.upgrade.registry.UUMisc;
@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 @Mixin(Entity.class)
-public abstract class IncendiaryMixin {
+public abstract class EntityMixin {
 
     @Redirect(
             method = "baseTick",

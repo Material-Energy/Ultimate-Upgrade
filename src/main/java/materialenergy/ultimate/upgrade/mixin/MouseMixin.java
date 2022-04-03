@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.mixin.api;
+package materialenergy.ultimate.upgrade.mixin;
 
 import materialenergy.ultimate.upgrade.api.MouseWheel;
 import materialenergy.ultimate.upgrade.registry.UUMisc;
@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(Mouse.class)
-public class AccessMouseWheel {
+public class MouseMixin {
 
     @Final @Shadow private MinecraftClient client;
     @Shadow private double x;

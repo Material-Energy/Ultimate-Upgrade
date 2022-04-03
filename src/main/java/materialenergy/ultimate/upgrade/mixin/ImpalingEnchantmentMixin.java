@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.mixin.runic;
+package materialenergy.ultimate.upgrade.mixin;
 
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
@@ -11,8 +11,8 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(ImpalingEnchantment.class)
-public class ImpalingDamageAll extends Enchantment {
-    protected ImpalingDamageAll(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
+public class ImpalingEnchantmentMixin extends Enchantment {
+    protected ImpalingEnchantmentMixin(Rarity weight, EnchantmentTarget type, EquipmentSlot[] slotTypes) {
         super(weight, type, slotTypes);
     }
 

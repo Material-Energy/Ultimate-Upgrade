@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.mixin.hearts;
+package materialenergy.ultimate.upgrade.mixin;
 
 import net.minecraft.entity.attribute.EntityAttribute;
 import org.spongepowered.asm.mixin.Final;
@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(EntityAttribute.class)
-public class ModifyFallback {
+public class EntityAttributeMixin {
 
     @Mutable
     @Shadow @Final private double fallback;

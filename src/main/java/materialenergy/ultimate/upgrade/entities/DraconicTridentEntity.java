@@ -151,7 +151,6 @@ public class DraconicTridentEntity extends PersistentProjectileEntity{
                 world.createExplosion(this.getOwner(),DamageSource.DRAGON_BREATH, explosionBehavior, blockPos.getX(),blockPos.getY(),blockPos.getZ(),3.0F,false, Explosion.DestructionType.NONE);
             } else {
                 int shards = 80 + (EnchantmentHelper.getLevel(Enchantments.IMPALING,this.tridentStack) + 1) * 20;
-                DraconicShard.explosion(this.getX(),this.getY(),this.getZ(), world, (LivingEntity) this.getOwner(), shards, EnchantmentHelper.getLevel(Enchantments.IMPALING,this.tridentStack), this.tridentStack.getOrCreateNbt());
             }
             soundEvent = SoundEvents.ITEM_TRIDENT_THUNDER;
             livingEntity2 = 5.0F;

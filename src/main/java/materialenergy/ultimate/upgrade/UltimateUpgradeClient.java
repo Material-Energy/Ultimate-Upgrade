@@ -1,6 +1,5 @@
 package materialenergy.ultimate.upgrade;
 
-import materialenergy.ultimate.upgrade.entities.DraconicShardRenderer;
 import materialenergy.ultimate.upgrade.entities.DraconicTridentRenderer;
 import materialenergy.ultimate.upgrade.entities.MoltenProjRenderer;
 import materialenergy.ultimate.upgrade.registry.UUEntities;
@@ -16,7 +15,6 @@ public class UltimateUpgradeClient implements ClientModInitializer {
     public void onInitializeClient() {
         EntityRendererRegistry.register(UUEntities.MOLTEN_ARROW, MoltenProjRenderer::new);
         EntityRendererRegistry.register(UUEntities.DRACONIC_TRIDENT, DraconicTridentRenderer::new);
-        EntityRendererRegistry.register(UUEntities.DRACONIC_SHARD, DraconicShardRenderer::new);
         EntityRendererRegistry.register(UUEntities.DRACONIC_FLARE, EmptyEntityRenderer::new);
         UUGUI.init();
         UUMisc.initClient();

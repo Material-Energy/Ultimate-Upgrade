@@ -1,6 +1,5 @@
-package materialenergy.ultimate.upgrade.mixin.display;
+package materialenergy.ultimate.upgrade.mixin;
 
-import materialenergy.ultimate.upgrade.item.draconic.DraconicCrossbowItem;
 import materialenergy.ultimate.upgrade.registry.UUItems;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
@@ -26,7 +25,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(HeldItemRenderer.class)
-public abstract class HeldCrossbowRenderer {
+public abstract class HeldItemRendererMixin {
 
     @Final @Shadow private MinecraftClient client;
     @Shadow private ItemStack offHand;
@@ -200,7 +199,7 @@ public abstract class HeldCrossbowRenderer {
         if (itemStack.isOf(Items.BOW) || itemStack.isOf(Items.CROSSBOW) || itemStack.isOf(UUItems.DRACONIC_CROSSBOW)) {
             return HeldItemRenderer.HandRenderType.shouldOnlyRender(hand);
         }
-        return hand == Hand.MAIN_HAND && HeldCrossbowRenderer.isChargedCrossbow(player.getOffHandStack()) ? HeldItemRenderer.HandRenderType.RENDER_MAIN_HAND_ONLY : HeldItemRenderer.HandRenderType.RENDER_BOTH_HANDS;
+        return hand == Hand.MAIN_HAND && HeldItemRendererMixin.isChargedCrossbow(player.getOffHandStack()) ? HeldItemRenderer.HandRenderType.RENDER_MAIN_HAND_ONLY : HeldItemRenderer.HandRenderType.RENDER_BOTH_HANDS;
     }
 
     private static boolean isChargedCrossbow(ItemStack stack) {

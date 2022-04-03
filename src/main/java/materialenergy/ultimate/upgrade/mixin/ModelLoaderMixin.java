@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.mixin.display;
+package materialenergy.ultimate.upgrade.mixin;
 
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.render.model.ModelLoader;
@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ModelLoader.class)
-public abstract class DraconicTridentRegistry {
+public abstract class ModelLoaderMixin {
 
     @Inject(
             method = "<init>",

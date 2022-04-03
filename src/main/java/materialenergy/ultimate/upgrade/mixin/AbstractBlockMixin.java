@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.mixin.progression;
+package materialenergy.ultimate.upgrade.mixin;
 
 import materialenergy.ultimate.upgrade.registry.UUItems;
 import net.minecraft.block.AbstractBlock;
@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
 @Mixin(AbstractBlock.class)
-public class Ultimatum {
+public class AbstractBlockMixin {
 
     /**
      * @author MaterialEnergy

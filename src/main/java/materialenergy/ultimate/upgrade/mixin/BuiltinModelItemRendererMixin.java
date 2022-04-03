@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.mixin.display;
+package materialenergy.ultimate.upgrade.mixin;
 
 import com.mojang.authlib.GameProfile;
 import com.mojang.datafixers.util.Pair;
@@ -35,7 +35,7 @@ import java.util.List;
 import java.util.Map;
 
 @Mixin(BuiltinModelItemRenderer.class)
-public class DraconicTridentDisplay {
+public class BuiltinModelItemRendererMixin {
     @Final
     @Shadow
     private static ShulkerBoxBlockEntity[] RENDER_SHULKER_BOX_DYED;

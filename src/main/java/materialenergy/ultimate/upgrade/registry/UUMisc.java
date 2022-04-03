@@ -21,6 +21,7 @@ import static materialenergy.ultimate.upgrade.registry.Registries.id;
 public class UUMisc {
     public static final Tag<Item> TRIDENTS = TagFactory.ITEM.create(id("tridents"));
     public static final Tag<Item> SCROLLABLE = TagFactory.ITEM.create(id("scrollable"));
+    public static final Tag<Item> AUTOSMELT = TagFactory.ITEM.create(id("autosmelt"));
 
     public static final DamageSource INCINERATE = new CustomDamageSource("incinerate").setBypassesArmor().setFire();
     public static final DamageSource VOID = new CustomDamageSource("void").setBypassesArmor().setOutOfWorld();

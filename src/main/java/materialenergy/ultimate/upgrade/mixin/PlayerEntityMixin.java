@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.mixin.api;
+package materialenergy.ultimate.upgrade.mixin;
 
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ItemEntity;
@@ -14,9 +14,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntity.class)
-public abstract class RetainOwnership extends LivingEntity {
+public abstract class PlayerEntityMixin extends LivingEntity {
 
-    protected RetainOwnership(EntityType<? extends LivingEntity> entityType, World world) {
+    protected PlayerEntityMixin(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
 

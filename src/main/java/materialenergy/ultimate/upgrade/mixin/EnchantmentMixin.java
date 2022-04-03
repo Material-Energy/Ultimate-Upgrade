@@ -1,11 +1,10 @@
-package materialenergy.ultimate.upgrade.mixin.progression;
+package materialenergy.ultimate.upgrade.mixin;
 
 import materialenergy.ultimate.upgrade.item.draconic.DraconicCrossbowItem;
 import materialenergy.ultimate.upgrade.item.draconic.DraconicTotemItem;
 import materialenergy.ultimate.upgrade.item.draconic.DraconicTridentItem;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentTarget;
-import net.minecraft.enchantment.UnbreakingEnchantment;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -15,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Enchantment.class)
-public class EnchantmentOnCustomTools {
+public class EnchantmentMixin {
     @Shadow
     @Final
     public EnchantmentTarget type;

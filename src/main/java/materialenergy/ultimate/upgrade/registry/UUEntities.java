@@ -1,11 +1,12 @@
 package materialenergy.ultimate.upgrade.registry;
 
-import materialenergy.ultimate.upgrade.entities.*;
+import materialenergy.ultimate.upgrade.entities.DraconicArrow;
+import materialenergy.ultimate.upgrade.entities.DraconicTridentEntity;
+import materialenergy.ultimate.upgrade.entities.MoltenProj;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricEntityTypeBuilder;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
-import net.minecraft.entity.projectile.PersistentProjectileEntity;
 import net.minecraft.util.registry.Registry;
 
 public class UUEntities {
@@ -15,13 +16,6 @@ public class UUEntities {
             FabricEntityTypeBuilder
                     .<MoltenProj>create(SpawnGroup.MISC, MoltenProj::new)
                     .dimensions(EntityDimensions.fixed(0.5f, 0.5f))
-                    .build());
-    public static final EntityType<DraconicShard> DRACONIC_SHARD = Registry.register(
-            Registry.ENTITY_TYPE,
-            Registries.id("draconic_shard"),
-            FabricEntityTypeBuilder
-                    .<DraconicShard>create(SpawnGroup.MISC,DraconicShard::new)
-                    .dimensions(EntityDimensions.fixed(0.5f,0.5f))
                     .build());
     public static EntityType<DraconicArrow> DRACONIC_FLARE = Registry.register(
             Registry.ENTITY_TYPE,

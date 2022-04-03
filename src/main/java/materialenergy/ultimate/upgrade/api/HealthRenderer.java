@@ -1,4 +1,4 @@
-package materialenergy.ultimate.upgrade.misc;
+package materialenergy.ultimate.upgrade.api;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
