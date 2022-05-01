@@ -1,6 +1,6 @@
 package materialenergy.ultimate.upgrade.mixin;
 
-import materialenergy.ultimate.upgrade.common.UltimateUpgrade;
+import materialenergy.ultimate.upgrade.common.registry.UUMisc;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
@@ -29,7 +29,7 @@ public class BlockMixin {
     private static void getDroppedStacks(BlockState state, ServerWorld world, BlockPos pos, BlockEntity blockEntity, Entity entity, ItemStack stack, CallbackInfoReturnable<List<ItemStack>> cir) {
         List<ItemStack> items = new ArrayList<>();
         List<ItemStack> returnValue = cir.getReturnValue();
-        if (stack.isIn(UltimateUpgrade.AUTOSMELT)) {
+        if (stack.isIn(UUMisc.AUTOSMELT)) {
             cir.setReturnValue(returnValue);
             return;
         }
